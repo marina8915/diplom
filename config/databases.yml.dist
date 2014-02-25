@@ -1,0 +1,47 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/07-Databases
+
+dev:
+  doctrine:
+    param:
+      classname:  DebugPDO
+      debug:
+        realmemoryusage: true
+        details:
+          time:       { enabled: true }
+          slow:       { enabled: true, threshold: 0.1 }
+          mem:        { enabled: true }
+          mempeak:    { enabled: true }
+          memdelta:   { enabled: true }
+
+test:
+  propel:
+    param:
+      classname:  DebugPDO
+
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn:      mysql:host=mysql.hostinger.com.ua;dbname=u911164729_sg
+      username: u911164729_sg
+      password: 15091989
+      encoding: utf8
+      attributes:
+        DEFAULT_TABLE_TYPE: INNODB
+        DEFAULT_TABLE_CHARSET: utf8
+        DEFAULT_TABLE_COLLATE: utf8_general_ci
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn:      mysql:host=localhost;dbname=rid_marina
+      username: root
+      password: admin
+      encoding: utf8
+      attributes:
+        DEFAULT_TABLE_TYPE: INNODB
+        DEFAULT_TABLE_CHARSET: utf8
+        DEFAULT_TABLE_COLLATE: utf8_general_ci
+
+# sfmadness_marina 3dwCWMKC

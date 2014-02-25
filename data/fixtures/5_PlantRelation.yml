@@ -1,0 +1,33 @@
+PlantRelation:
+  r1:
+    prev_plant: pshenica
+    next_plant: sonashnik
+    value: 3
+  r2:
+    prev_plant: sonashnik
+    next_plant: pshenica
+    value: 7
+  r3:
+    prev_plant: pshenica
+    next_plant: kartofel
+    value: 5
+
+  r4:
+    prev_plant: pshenica
+    next_plant: buryak
+    value: 6
+
+  r5:
+    prev_plant: sonashnik
+    next_plant: soya
+    value: 1
+
+  r6:
+    prev_plant: soya
+    next_plant: kartofel
+    value: 9
+
+  r7:
+    prev_plant: soya
+    next_plant: pshenica
+    value: 7

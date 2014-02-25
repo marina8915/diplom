@@ -1,0 +1,74 @@
+fertilizer:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Fertilizer
+    module:               fertilizer
+    prefix_path:          /fertilizer
+    column:               id
+    with_wildcard_routes: true
+
+plant_relation:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                PlantRelation
+    module:               relations
+    prefix_path:          /relations
+    column:               id
+    with_wildcard_routes: true
+
+plant:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Plant
+    module:               plant
+    prefix_path:          /plant
+    column:               id
+    with_wildcard_routes: true
+
+field:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Field
+    module:               field
+    prefix_path:          /field
+    column:               id
+    with_wildcard_routes: true
+
+ground_type:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                GroundType
+    module:               ground
+    prefix_path:          /ground
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: main, action: index }
+
+calc_result:
+  url:   /calc_result
+  param: { module: main, action: calcResult }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*
+
+about:
+  url:   /about
+  param: { module: about, action: index }
+
+instruction:
+  url:   /instruction
+  param: { module: about, action: instruction }
+

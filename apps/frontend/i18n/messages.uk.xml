@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd" >
+<xliff version="1.0">
+    <file original="global" source-language="en_US" datatype="plaintext">
+        <body>
+            <trans-unit >
+                <source>Id</source>
+                <target>#</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Name</source>
+                <target>Назва</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Ground List</source>
+                <target>Список типів грунту</target>
+            </trans-unit>
+            <trans-unit>
+                <source>New Ground</source>
+                <target>Новий тип грунту</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Edit Ground</source>
+                <target>Редагувати тип грунту</target>
+            </trans-unit>
+
+            <trans-unit>
+                <source>Field List</source>
+                <target>Список полів</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Prev plant</source>
+                <target>Культура</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Edit Field</source>
+                <target>Редагувати поле</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Plant List</source>
+                <target>Список культур</target>
+            </trans-unit>
+            <trans-unit>
+                <source>Edit Plant</source>
+                <target>Редагувати культуру</target>
+            </trans-unit>
+            <trans-unit >
+                <source>New Field</source>
+                <target>Нове поле</target>
+            </trans-unit>
+            <trans-unit >
+                <source>New Plant</source>
+                <target>Новий культура</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Seed price</source>
+                <target>Вартість зерна на посів (грн/кг)</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Price</source>
+                <target>Ціна(грн/кг)</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Fertilizer mass</source>
+                <target>Норма внесення добрив (кг/га)</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Seeding rate</source>
+                <target>Норма посіву (кг/га)</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Growing rate</source>
+                <target>Врожайність (кг/га)</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Fuel</source>
+                <target>Затрати пального (л/га)</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Man hours</source>
+                <target>Витрати праці (годин/га)</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Fertilizer</source>
+                <target>Добриво</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Relations List</source>
+                <target>Список попередників</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Value</source>
+                <target>Пріоритет</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Next plant</source>
+                <target>Наступна культура</target>
+            </trans-unit>
+            <trans-unit >
+                <source>New Relations</source>
+                <target>Новий попередник</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Edit Relations</source>
+                <target>Редагування</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Fertilizer List</source>
+                <target>Список добрив</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Edit Fertilizer</source>
+                <target>Редагування добрива</target>
+            </trans-unit>
+            <trans-unit >
+                <source>New Fertilizer</source>
+                <target>Додати добриво</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Are you sure?</source>
+                <target>Ви впевнені?</target>
+            </trans-unit>
+            
+
+            
+        </body>
+    </file>
+</xliff>

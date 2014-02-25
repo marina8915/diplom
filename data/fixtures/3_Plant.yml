@@ -1,0 +1,55 @@
+Plant:
+  pshenica:
+    name: Пшениця
+    price: 0.4
+    seed_price: 0.2
+    fertilizer_mass: 200
+    seeding_rate: 200
+    growing_rate: 1200
+    fuel: 25
+    man_hours: 15
+    Fertilizer: fertilizer1
+
+  sonashnik:
+    name: Соняшник
+    price: 0.55
+    seed_price: 0.2
+    fertilizer_mass: 200
+    seeding_rate: 200
+    growing_rate: 1200
+    fuel: 25
+    man_hours: 15
+    Fertilizer: fertilizer1
+
+  kartofel:
+    name: Картопля
+    price: 0.3
+    seed_price: 0.2
+    fertilizer_mass: 200
+    seeding_rate: 200
+    growing_rate: 1200
+    fuel: 25
+    man_hours: 15
+    Fertilizer: fertilizer1
+
+  buryak:
+    name: Буряк
+    price: 0.45
+    seed_price: 0.2
+    fertilizer_mass: 200
+    seeding_rate: 200
+    growing_rate: 1200
+    fuel: 25
+    man_hours: 15
+    Fertilizer: fertilizer1
+
+  soya:
+    name: Соя
+    price: 0.45
+    seed_price: 0.2
+    fertilizer_mass: 200
+    seeding_rate: 200
+    growing_rate: 1200
+    fuel: 25
+    man_hours: 15
+    Fertilizer: fertilizer1

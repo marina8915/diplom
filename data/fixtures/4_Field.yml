@@ -1,0 +1,12 @@
+Field:
+  field1:
+    name: Поле 1
+    Plant: pshenica
+
+  field2:
+    name: Поле 2
+    Plant: soya
+
+  field3:
+    name: Поле 3
+    Plant: sonashnik

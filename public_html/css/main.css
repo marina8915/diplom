@@ -1,0 +1,114 @@
+html,body                       { width:100%; height:100%; }
+body                            { padding:0; margin:0; font:12px Tahoma, sans-serif; background:#fff; color:#000; }
+div,p,a,span,em,strong,img,h1,h2,h3,h4,h5,h6,ul
+,ol,li,dl,dt,dd,table,td,tr,form,fieldset,label,select,input,textarea {
+    padding:0;
+    margin:0;
+    outline:none;
+    list-style:none;
+}
+select, input, textarea        { font-size:12px; vertical-align:middle; }
+textarea                       { vertical-align:top; }
+:focus                         { outline:none; }
+input[type=submit]             { cursor:pointer; }
+img, fieldset                  { border:0; }
+table                          { border-collapse:collapse; border-spacing:0; width: 100%; }
+a                              { text-decoration:none; }
+a:hover                        { text-decoration:underline; }
+
+.clear{ clear: both; }
+body {background: url("../img/body_bg.jpg")no-repeat scroll 50% 0 #1D6C01;;  height: 100%;}
+.site-wrapper{
+    width: 800px;
+    margin: 0 auto;
+    padding:20px;
+    margin-top:70px;
+    background:#fff;
+    box-shadow: 0 0 12px;
+    min-height:75%;}
+
+.site-wrapper .navbar{
+    margin-top:170px;
+}
+
+.sf_admin_filter td{
+    padding: 3px;
+}
+
+#sf_admin_content{
+clear:both;}
+
+#sf_admin_container th{
+    white-space: normal;
+    text-align: left;
+    vertical-align: top;
+    border-left: 1px solid #ddd;
+}
+
+#sf_admin_container td{
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.field-wrapper{
+    width: 188px;
+    height: 110px;
+    margin: 0 10px 10px 0;
+    padding-top: 60px;
+    float: left;
+    text-align: center;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+.logo{float:left;}
+.logo a{
+    background: url("../img/logo.png") no-repeat;
+    display: block;
+    height: 150px;
+    text-indent: -5000em;
+    width: 250px;
+}
+
+.slaid {margin-bottom:20px;}
+.pull-right li{
+    float: left;
+    margin-right: 10px;
+}
+.chart-div{
+    width: 800px;
+    height: 500px;
+}
+
+.year-cell{
+    cursor: pointer !important;
+}
+
+.year-cell.active{
+    background-color: #daffe1 !important;
+}
+
+.year-cell:hover{
+    background-color: #daffe1 !important;
+}
+
+#sf_admin_bar .sf_admin_filter{
+    clear: both;
+}
+footer{
+    padding: 44px 0 46px;
+    display:block;
+    padding: 44px 0 26px;
+    text-align:center;
+    overflow:hidden;
+    height: 40px;
+}
+
+.calc-form-wrapper{
+    float: left;
+}
+
+.fertilizers-wrapper{
+    float: right;
+    width: 300px;
+}

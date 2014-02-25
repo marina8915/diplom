@@ -1,0 +1,47 @@
+Plant:
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
+    seed_price: { type: integer, notnull: true }
+    price: { type: float, notnull: true }
+    fertilizer_mass: { type: integer, notnull: true }
+    seeding_rate: { type: integer, notnull: true }
+    growing_rate: { type: integer, notnull: true }
+    fuel: { type: integer, notnull: true }
+    man_hours: { type: integer, notnull: true }
+    fertilizer_id: { type: integer }
+  relations:
+    Fertilizer: { class: Fertilizer, local: fertilizer_id, foreign: id }
+    Prevs: { local: next_plant_id, foreign: prev_plant_id, class: Plant, refClass: PlantRelation }
+    Nexts: { local: prev_plant_id, foreign: next_plant_id, class: Plant, refClass: PlantRelation }
+    PrevPR: { local: id, foreign: next_plant_id, class: PlantRelation }
+    NextPR: { local: id, foreign: prev_plant_id, class: PlantRelation }
+
+Fertilizer:
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
+    price: { type: float, notnull: true }
+
+Field:
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
+    prev_plant_id: { type: integer }
+  relations:
+    Plant: { class: Plant, local: prev_plant_id, foreign: id }
+
+PlantRelation:
+  columns:
+    value: { type: integer, notnull: true }
+    prev_plant_id: { type: integer }
+    next_plant_id: { type: integer }
+  relations:
+    prev_plant: { class: Plant, local: prev_plant_id, foreign: id, onDelete: CASCADE }
+    next_plant: { class: Plant, local: next_plant_id, foreign: id, onDelete: CASCADE }
+
+GroundType:
+  columns:
+    name: { type: string(255), notnull: true, unique: true }
+
+Settings:
+  columns:
+    name:          { type: varchar(255) }
+    value:         { type: varchar(255) }
