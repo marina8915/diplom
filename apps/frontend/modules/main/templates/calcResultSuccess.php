@@ -17,7 +17,7 @@ $rentableManager = $rentableManager->getRawValue();
     <thead>
     <tr>
         <th>&nbsp;
-            
+
         </th>
         <?php for($i=1; $i<1+$yearsCount; $i++): ?>
             <th>
