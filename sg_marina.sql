@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Дек 22 2013 г., 08:42
--- Версия сервера: 5.5.31
--- Версия PHP: 5.4.6-1ubuntu1.2
+-- Время создания: Мар 03 2014 г., 16:16
+-- Версия сервера: 5.5.35
+-- Версия PHP: 5.4.6-1ubuntu1.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,17 +29,18 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `fertilizer` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
+  `price` float(18,2) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `fertilizer`
 --
 
-INSERT INTO `fertilizer` (`id`, `name`) VALUES
-(3, 'азотні'),
-(4, 'фосфатні');
+INSERT INTO `fertilizer` (`id`, `name`, `price`) VALUES
+(1, 'азотні', 0.00),
+(2, 'фосфатні', 0.00);
 
 -- --------------------------------------------------------
 
@@ -51,6 +52,8 @@ CREATE TABLE IF NOT EXISTS `field` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `prev_plant_id` bigint(20) DEFAULT NULL,
+  `width` bigint(25) NOT NULL,
+  `length` bigint(25) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `prev_plant_id_idx` (`prev_plant_id`)
@@ -60,10 +63,12 @@ CREATE TABLE IF NOT EXISTS `field` (
 -- Дамп данных таблицы `field`
 --
 
-INSERT INTO `field` (`id`, `name`, `prev_plant_id`) VALUES
-(4, 'Поле 1', 6),
-(5, 'Поле 2', 10),
-(6, 'Поле 3', 7);
+INSERT INTO `field` (`id`, `name`, `prev_plant_id`, `width`, `length`) VALUES
+(1, 'Поле 1', 2, 20, 20),
+(2, 'Поле 2', 5, 15, 15),
+(3, 'Поле 3', 2, 12, 30),
+(5, 'dfdg', 1, 23, 12),
+(6, 'dvgfjkghk', 1, 14, 12);
 
 -- --------------------------------------------------------
 
@@ -76,15 +81,15 @@ CREATE TABLE IF NOT EXISTS `ground_type` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `ground_type`
 --
 
 INSERT INTO `ground_type` (`id`, `name`) VALUES
-(4, 'Дерново-підзолистий'),
-(3, 'Чорнозем');
+(2, 'Дерново-підзолистий'),
+(1, 'Чорнозем');
 
 -- --------------------------------------------------------
 
@@ -106,18 +111,18 @@ CREATE TABLE IF NOT EXISTS `plant` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   KEY `fertilizer_id_idx` (`fertilizer_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `plant`
 --
 
 INSERT INTO `plant` (`id`, `name`, `seed_price`, `price`, `fertilizer_mass`, `seeding_rate`, `growing_rate`, `fuel`, `man_hours`, `fertilizer_id`) VALUES
-(6, 'Пшениця', 0, 0.40, 200, 200, 1200, 25, 15, 3),
-(7, 'Соняшник', 0, 0.55, 200, 200, 1200, 25, 15, 3),
-(8, 'Картопля', 0, 0.30, 200, 200, 1200, 25, 15, 3),
-(9, 'Буряк', 0, 0.45, 200, 200, 1200, 25, 15, 3),
-(10, 'Соя', 0, 0.45, 200, 200, 1200, 25, 15, 3);
+(1, 'Пшениця', 0, 0.40, 200, 200, 1200, 25, 15, 1),
+(2, 'Соняшник', 0, 0.55, 200, 200, 1200, 25, 15, 1),
+(3, 'Картопля', 0, 0.30, 200, 200, 1200, 25, 15, 1),
+(4, 'Буряк', 0, 0.45, 200, 200, 1200, 25, 15, 1),
+(5, 'Соя', 0, 0.45, 200, 200, 1200, 25, 15, 1);
 
 -- --------------------------------------------------------
 
@@ -133,20 +138,20 @@ CREATE TABLE IF NOT EXISTS `plant_relation` (
   PRIMARY KEY (`id`),
   KEY `prev_plant_id_idx` (`prev_plant_id`),
   KEY `next_plant_id_idx` (`next_plant_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Дамп данных таблицы `plant_relation`
 --
 
 INSERT INTO `plant_relation` (`id`, `value`, `prev_plant_id`, `next_plant_id`) VALUES
-(8, 3, 6, 7),
-(9, 7, 7, 6),
-(10, 5, 6, 8),
-(11, 6, 6, 9),
-(12, 1, 7, 10),
-(13, 9, 10, 8),
-(14, 7, 10, 6);
+(1, 3, 1, 2),
+(2, 7, 2, 1),
+(3, 5, 1, 3),
+(4, 6, 1, 4),
+(5, 1, 2, 5),
+(6, 9, 5, 3),
+(7, 7, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -159,15 +164,15 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `name` varchar(255) DEFAULT NULL,
   `value` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Дамп данных таблицы `settings`
 --
 
 INSERT INTO `settings` (`id`, `name`, `value`) VALUES
-(3, 'password', '111'),
-(4, 'adminemail', 'mrriddick7@gmail.com');
+(1, 'password', '111'),
+(2, 'adminemail', 'mrriddick7@gmail.com');
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
