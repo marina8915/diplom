@@ -1,4 +1,4 @@
-<!--<div class="clear"></div>
+<div class="clear"></div>
 <br><br>
 <?php foreach($fields as $field): ?>
     <div class="field-wrapper">
@@ -10,13 +10,14 @@
         <div class="clear"></div>
         <em><?php echo $field->getPlant()->getName(); ?></em>
         <div class="clear"></div>
-        <?php echo Plant::SQUARE; ?> га
+        <? $SQUARE=($field->getLength()*$field->getWidth())/10000 ?>
+        <?php echo $SQUARE; ?> га
     </div>
 <?php endforeach; ?>
 
 <div class="field-wrapper">
     <a class="btn btn-success" href="<?php echo url_for('@field_new') ?>">Додати</a>
-</div>-->
+</div>
 
 <br><br>
 <div class="clear"></div>

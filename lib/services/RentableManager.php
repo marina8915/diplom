@@ -45,7 +45,9 @@ class RentableManager{
     public function getGrowProfit(Plant $plant){
         return $plant->getPrice() * $plant->getGrowingRate();
     }
-
+    public function getAreaField(Plant $field){
+        return $field->getWidth() * $field>getLength();
+    }
     // ассоціація рентабельності до рослини
     public function getProfitMap($plants, CalcConfig $config){
         $map = new SplObjectStorage();

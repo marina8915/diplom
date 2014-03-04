@@ -8,7 +8,7 @@ $rentableManager = $rentableManager->getRawValue();
     var allData = [];
     var valueData = [];
     var profitData = [];
-    //    allData[fieldId][year] = googleCartData;
+//   allData[fieldId][year] = googleCartData;
 </script>
 
 Сівозміна:
@@ -21,9 +21,13 @@ $rentableManager = $rentableManager->getRawValue();
         </th>
         <?php for($i=1; $i<1+$yearsCount; $i++): ?>
             <th>
-                <b><?php echo 'Поле '.$i; ?></b>
+                <b><?php echo 'Рік '.$i; ?></b>
             </th>
         <?php endfor; ?>
+        <?php  $fieldCount=0 ?>
+       <?php foreach($fields as $field): ?>
+                 <?php  $fieldCount=$fieldCount+1 ?>
+        <?php endforeach; ?>
     </tr>
     </thead>
     <tbody>
@@ -36,15 +40,16 @@ $rentableManager = $rentableManager->getRawValue();
                     valueData['<?php echo $field->getId(); ?>'] = [];
                     profitData['<?php echo $field->getId(); ?>'] = [];
                 </script>
-              <!-- <b><?php echo $field->getName(); ?></b>
-                <em><?php echo $field->getPlant()->getName(); ?></em> -->
+              <b><?php echo $field->getName(); ?></b>
+                <!-- <em><?php echo $field->getPlant()->getName(); ?></em> -->
+
             </td>
 
             <?php
             /** @var $currentPlant Plant */
             $currentPlant = $field->getPlant();
 
-            for($i=$startYear; $i<$startYear+$yearsCount; $i++): ?>
+            for($i=1; $i<$yearsCount+1; $i++): ?>
                 <td fieldId="<?php echo $field->getId();?>" year="<?php echo $i;?>" class="year-cell" fieldName="<?php echo $field->getName();?>">
                     <?php
                     $valueMap = $currentPlant->getNextPlantsValueMap();
@@ -108,8 +113,9 @@ $rentableManager = $rentableManager->getRawValue();
 
                 var fieldId = jQuery(this).attr('fieldId');
                 var year = jQuery(this).attr('year');
+                var fieldName = jQuery(this).attr('fieldName');
 
-                var title = 'Поле ' + year;
+                var title = fieldName;
                 var options = {
                     title: title,
                     hAxis: {title: 'Культури', titleTextStyle: {color: 'green'}}
