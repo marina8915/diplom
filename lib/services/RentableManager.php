@@ -15,6 +15,7 @@ class RentableManager{
         return $resultingArray[$this->getMaxArrayKey($resultingArray)];
     }
 
+
     // підрахунок рентабельності для культури
     public function getRentable(Plant $plant, CalcConfig $config){
         $money = 0;
@@ -22,6 +23,7 @@ class RentableManager{
         $money -= $this->getHoursCost($plant, $config->getHourPrice());
         $money -= $this->getFuelCost($plant, $config->getFuelPrice());
         $money -= $this->getFertilizerCost($plant);
+//////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         $money += $this->getGrowProfit($plant);
         return $money;
     }
@@ -45,9 +47,7 @@ class RentableManager{
     public function getGrowProfit(Plant $plant){
         return $plant->getPrice() * $plant->getGrowingRate();
     }
-    public function getAreaField(Plant $field){
-        return $field->getWidth() * $field>getLength();
-    }
+
     // ассоціація рентабельності до рослини
     public function getProfitMap($plants, CalcConfig $config){
         $map = new SplObjectStorage();

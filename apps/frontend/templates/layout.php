@@ -10,7 +10,9 @@
 </head>
 <body>
 <div class="site-wrapper">
-<h1 class='logo'><a href='/'>Левада</a></h1>
+<h1 class='logo'>
+    <a href='/'><img src="../img/logo.png" alt="Інформаційна система оптимізації сівозміни малого аграрного підприємства"/>
+    Інформаційна система оптимізації сівозміни малого аграрного підприємства</a></h1>
 <?php include_partial('main/user_menu') ?>
 
     <div class="navbar">    
@@ -25,7 +27,7 @@
     <?php echo $sf_content ?>
 </div>
 <footer>
-	Copyright  &copy; 2013 "Левада"
+	Copyright  &copy; 2013, Бакум М.В.
 </footer>
 
 </body>

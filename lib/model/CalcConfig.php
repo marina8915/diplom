@@ -12,9 +12,9 @@ class CalcConfig{
         $calcConfig->setFuelPrice($data['fuel_price']);
         if (isset($data['hour_price']))
         $calcConfig->setHourPrice($data['hour_price']);
-        if (isset($data['ground_type'])){
-            $groundType = GroundTypeTable::findById($data['ground_type']);
-            $calcConfig->setGroundType($groundType);
+      if (isset($data['ground_type'])){
+          $groundType = GroundTypeTable::findById($data['ground_type']);
+           $calcConfig->setGroundType($groundType);
         }
 
         return $calcConfig;

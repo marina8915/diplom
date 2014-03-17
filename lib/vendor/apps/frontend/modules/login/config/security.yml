@@ -1,0 +1,6 @@
+login:
+  is_secure: false
+logout:
+  is_secure: false
+loginform:
+  is_secure: false

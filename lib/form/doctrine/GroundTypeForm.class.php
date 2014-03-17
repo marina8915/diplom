@@ -12,5 +12,6 @@ class GroundTypeForm extends BaseGroundTypeForm
 {
   public function configure()
   {
+   //   unset($this['ground_list']);
   }
 }

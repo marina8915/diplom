@@ -12,4 +12,5 @@
  */
 class GroundType extends BaseGroundType
 {
+
 }

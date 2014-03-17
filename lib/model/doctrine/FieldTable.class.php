@@ -24,7 +24,7 @@ class FieldTable extends Doctrine_Table
             ->from('Field f')
             ->leftJoin("f.Plant p")
         ;
-    }
 
+    }
 
 }
