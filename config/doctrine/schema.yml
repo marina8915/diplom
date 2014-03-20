@@ -28,6 +28,7 @@ Field:
 
   relations:
     Plant: { class: Plant, local: prev_plant_id, foreign: id }
+    GroundType: { class: GroundType, local: ground_type_id, foreign: id }
 
 PlantRelation:
   columns:

@@ -13,3 +13,6 @@
 <td class="sf_admin_text sf_admin_list_td_prev_length">
     <?php echo $field->getLength() ?>
 </td>
+<td class="sf_admin_foreignkey sf_admin_list_td_ground_type_id">
+    <?php echo $field->getGroundType()->getName() ?>
+</td>

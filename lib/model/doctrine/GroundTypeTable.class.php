@@ -74,11 +74,11 @@ class GroundTypeTable extends Doctrine_Table
             ;
     }
 
- //   public static function getAll()
-  //  {
-  //      return Doctrine_Query::create()
-     //       ->select("g.*")
-    //        ->from('GroundType  g')
-  //          ;
-  //  }
+    public static function getAll()
+   {
+        return Doctrine_Query::create()
+            ->select("g.*")
+            ->from('GroundType g')
+            ;
+   }
 }
