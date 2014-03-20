@@ -12,7 +12,7 @@
  */
 class Plant extends BasePlant
 {
-    //const SQUARE = 20;
+   // const SQUARE = 20;
 
     public function __toString(){
         return (string)$this->getName();

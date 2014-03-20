@@ -52,6 +52,7 @@ $rentableManager = $rentableManager->getRawValue();
             for($i=1; $i<$yearsCount+1; $i++): ?>
                 <td fieldId="<?php echo $field->getId();?>" year="<?php echo $i;?>" class="year-cell" fieldName="<?php echo $field->getName();?>">
                     <?php
+
                     $valueMap = $currentPlant->getNextPlantsValueMap();
                     if ($valueMap instanceof sfOutputEscaperIteratorDecorator) $valueMap= $valueMap->getRawValue();
                     $profitMap = $rentableManager->getProfitMap($valueMap, $calcConfig->getRawValue());
@@ -84,10 +85,11 @@ $rentableManager = $rentableManager->getRawValue();
                     </script>
 
                     <?php // готуємо дані для діаграм
+                    $SQUARE=($field->getLength()*$field->getWidth())/10000;
                     $td = array();
                     $td [] = array('', 'Пріоритет по прибутку в грн/га');
                     foreach($profitMap as $key=>$nextPlant){
-                        $td [] = array($nextPlant->getName(), (float)$profitMap[$nextPlant]);
+                        $td [] = array($nextPlant->getName(), (float)$profitMap[$nextPlant]*$SQUARE);
                     }
                     ?>
                     <script type="text/javascript">

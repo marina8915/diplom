@@ -23,7 +23,6 @@ class RentableManager{
         $money -= $this->getHoursCost($plant, $config->getHourPrice());
         $money -= $this->getFuelCost($plant, $config->getFuelPrice());
         $money -= $this->getFertilizerCost($plant);
-//////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         $money += $this->getGrowProfit($plant);
         return $money;
     }
