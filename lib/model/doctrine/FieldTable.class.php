@@ -21,9 +21,10 @@ class FieldTable extends Doctrine_Table
     {
         return Doctrine_Query::create()
             ->select("f.*")
-            //->select("f.*, p.name as plant_name")
+            ->select("f.*, p.name as plant_name")
             ->from('Field f')
-            //->leftJoin("f.Plant p")
+            ->leftJoin("f.Plant p")
+
         ;
 
     }

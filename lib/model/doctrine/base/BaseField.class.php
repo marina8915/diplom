@@ -7,17 +7,26 @@
  * 
  * @property string $name
  * @property integer $prev_plant_id
+ * @property integer $width
+ * @property integer $length
+ * @property integer $ground_type_id
  * @property Plant $Plant
  * @property GroundType $GroundType
  * 
- * @method string     getName()          Returns the current record's "name" value
- * @method integer    getPrevPlantId()   Returns the current record's "prev_plant_id" value
- * @method Plant      getPlant()         Returns the current record's "Plant" value
- * @method GroundType getGroundType()    Returns the current record's "GroundType" value
- * @method Field      setName()          Sets the current record's "name" value
- * @method Field      setPrevPlantId()   Sets the current record's "prev_plant_id" value
- * @method Field      setPlant()         Sets the current record's "Plant" value
- * @method Field      setGroundType()    Sets the current record's "GroundType" value
+ * @method string     getName()           Returns the current record's "name" value
+ * @method integer    getPrevPlantId()    Returns the current record's "prev_plant_id" value
+ * @method integer    getWidth()          Returns the current record's "width" value
+ * @method integer    getLength()         Returns the current record's "length" value
+ * @method integer    getGroundTypeId()   Returns the current record's "ground_type_id" value
+ * @method Plant      getPlant()          Returns the current record's "Plant" value
+ * @method GroundType getGroundType()     Returns the current record's "GroundType" value
+ * @method Field      setName()           Sets the current record's "name" value
+ * @method Field      setPrevPlantId()    Sets the current record's "prev_plant_id" value
+ * @method Field      setWidth()          Sets the current record's "width" value
+ * @method Field      setLength()         Sets the current record's "length" value
+ * @method Field      setGroundTypeId()   Sets the current record's "ground_type_id" value
+ * @method Field      setPlant()          Sets the current record's "Plant" value
+ * @method Field      setGroundType()     Sets the current record's "GroundType" value
  * 
  * @package    marina
  * @subpackage model
@@ -35,24 +44,20 @@ abstract class BaseField extends sfDoctrineRecord
              'unique' => true,
              'length' => 255,
              ));
-
         $this->hasColumn('prev_plant_id', 'integer', null, array(
              'type' => 'integer',
              ));
-
         $this->hasColumn('width', 'integer', null, array(
-            'type' => 'integer',
-            'notnull' => true,
-        ));
-
+             'type' => 'integer',
+             'notnull' => true,
+             ));
         $this->hasColumn('length', 'integer', null, array(
-            'type' => 'integer',
-            'notnull' => true,
-       ));
-
+             'type' => 'integer',
+             'notnull' => true,
+             ));
         $this->hasColumn('ground_type_id', 'integer', null, array(
-            'type' => 'integer',
-        ));
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
@@ -62,8 +67,8 @@ abstract class BaseField extends sfDoctrineRecord
              'local' => 'prev_plant_id',
              'foreign' => 'id'));
 
-       $this->hasOne('GroundType', array(
-            'local' => 'ground_type_id',
+        $this->hasOne('GroundType', array(
+             'local' => 'ground_type_id',
              'foreign' => 'id'));
     }
 }

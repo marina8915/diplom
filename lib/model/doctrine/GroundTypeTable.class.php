@@ -81,4 +81,5 @@ class GroundTypeTable extends Doctrine_Table
             ->from('GroundType g')
             ;
    }
+
 }

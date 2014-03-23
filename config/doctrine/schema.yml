@@ -25,6 +25,9 @@ Field:
   columns:
     name: { type: string(255), notnull: true, unique: true }
     prev_plant_id: { type: integer }
+    width: { type: integer, notnull: true }
+    length: { type: integer, notnull: true }
+    ground_type_id: { type: integer }
 
   relations:
     Plant: { class: Plant, local: prev_plant_id, foreign: id }
