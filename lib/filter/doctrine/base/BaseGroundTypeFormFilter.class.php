@@ -13,11 +13,13 @@ abstract class BaseGroundTypeFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'name'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'plants_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Plant')),
     ));
 
     $this->setValidators(array(
-      'name' => new sfValidatorPass(array('required' => false)),
+      'name'        => new sfValidatorPass(array('required' => false)),
+      'plants_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Plant', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('ground_type_filters[%s]');
@@ -29,6 +31,24 @@ abstract class BaseGroundTypeFormFilter extends BaseFormFilterDoctrine
     parent::setup();
   }
 
+  public function addPlantsListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.Plant_Ground Plant_Ground')
+      ->andWhereIn('Plant_Ground.plant_id', $values)
+    ;
+  }
+
   public function getModelName()
   {
     return 'GroundType';
@@ -37,8 +57,9 @@ abstract class BaseGroundTypeFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'   => 'Number',
-      'name' => 'Text',
+      'id'          => 'Number',
+      'name'        => 'Text',
+      'plants_list' => 'ManyKey',
     );
   }
 }

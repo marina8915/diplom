@@ -45,6 +45,16 @@ PlantRelation:
 GroundType:
   columns:
     name: { type: string(255), notnull: true, unique: true }
+  relations:
+     Plants: {class: Plant, refClass: Plant_Ground, local: ground_id, foreign: plant_id, foreignAlias: GroundTypes}
+
+Plant_Ground:
+        columns:
+          plant_id:  { type: integer, primary: true }
+          ground_id: { type: integer, primary: true }
+        relations:
+          Plant:  { onDelete: CASCADE, local: plant_id, foreign: id }
+          GroundType: { onDelete: CASCADE, local: ground_id, foreign: id }
 
 Settings:
   columns:

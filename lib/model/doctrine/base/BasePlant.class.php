@@ -20,6 +20,8 @@
  * @property PlantRelation $PrevPR
  * @property PlantRelation $NextPR
  * @property Doctrine_Collection $Field
+ * @property Doctrine_Collection $GroundTypes
+ * @property Doctrine_Collection $Plant_Ground
  * 
  * @method string              getName()            Returns the current record's "name" value
  * @method integer             getSeedPrice()       Returns the current record's "seed_price" value
@@ -36,6 +38,8 @@
  * @method PlantRelation       getPrevPR()          Returns the current record's "PrevPR" value
  * @method PlantRelation       getNextPR()          Returns the current record's "NextPR" value
  * @method Doctrine_Collection getField()           Returns the current record's "Field" collection
+ * @method Doctrine_Collection getGroundTypes()     Returns the current record's "GroundTypes" collection
+ * @method Doctrine_Collection getPlantGround()     Returns the current record's "Plant_Ground" collection
  * @method Plant               setName()            Sets the current record's "name" value
  * @method Plant               setSeedPrice()       Sets the current record's "seed_price" value
  * @method Plant               setPrice()           Sets the current record's "price" value
@@ -51,6 +55,8 @@
  * @method Plant               setPrevPR()          Sets the current record's "PrevPR" value
  * @method Plant               setNextPR()          Sets the current record's "NextPR" value
  * @method Plant               setField()           Sets the current record's "Field" collection
+ * @method Plant               setGroundTypes()     Sets the current record's "GroundTypes" collection
+ * @method Plant               setPlantGround()     Sets the current record's "Plant_Ground" collection
  * 
  * @package    marina
  * @subpackage model
@@ -129,5 +135,14 @@ abstract class BasePlant extends sfDoctrineRecord
         $this->hasMany('Field', array(
              'local' => 'id',
              'foreign' => 'prev_plant_id'));
+
+        $this->hasMany('GroundType as GroundTypes', array(
+             'refClass' => 'Plant_Ground',
+             'local' => 'plant_id',
+             'foreign' => 'ground_id'));
+
+        $this->hasMany('Plant_Ground', array(
+             'local' => 'id',
+             'foreign' => 'plant_id'));
     }
 }

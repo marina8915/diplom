@@ -22,16 +22,21 @@ CREATE TABLE IF NOT EXISTS `field` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `prev_plant_id` bigint(20) DEFAULT NULL,
+  `width` bigint(20) NOT NULL,
+  `length` bigint(20) NOT NULL,
+  `ground_type_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
-  KEY `prev_plant_id_idx` (`prev_plant_id`)
+  KEY `prev_plant_id_idx` (`prev_plant_id`),
+  KEY `ground_type_id_idx` (`ground_type_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
-INSERT INTO `field` (`id`, `name`, `prev_plant_id`) VALUES
-(4, 'Поле 1', 6),
-(5, 'Поле 2', 10),
-(6, 'Поле 3', 7);
-
+INSERT INTO `field` (`id`, `name`, `prev_plant_id`, `width`, `length`, `ground_type_id`) VALUES
+(1, 'Леськи 1', 2, 500, 2000, 1),
+(2, 'Леськи 2', 5, 700, 150, 1),
+(3, 'Червона Слобода 2', 2, 520, 400, 2),
+(5, 'Геронімівка', 1, 400, 720, 1),
+(6, 'Червона Слобода 1', 1, 640, 520, 1);
 CREATE TABLE IF NOT EXISTS `ground_type` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,

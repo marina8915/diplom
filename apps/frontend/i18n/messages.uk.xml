@@ -128,8 +128,14 @@
                 <source>Length</source>
                 <target>Довжина поля, м</target>
             </trans-unit>
-
-            
+  	    <trans-unit >
+                <source>Ground type</source>
+                <target>Тип грунту</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Plants list</source>
+                <target>Культури</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

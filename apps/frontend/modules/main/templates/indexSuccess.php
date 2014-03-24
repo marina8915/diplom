@@ -8,10 +8,12 @@
             </a>
         </b>
         <div class="clear"></div>
-        <em><?php echo $field->getPlant()->getName(); ?></em>
+        Попередник: <em><?php echo $field->getPlant()->getName(); ?></em>
         <div class="clear"></div>
-        <? $SQUARE=($field->getLength()*$field->getWidth())/10000 ?>
-        <?php echo $SQUARE; ?> га
+        <? $SQUARE=($field->getLength()*$field->getWidth())/10000; ?>
+        Площа: <?php echo $SQUARE; ?> га
+        <div class="clear"></div>
+        Грунт: <?php echo $field->getGroundType()->getName(); ?>
     </div>
 <?php endforeach; ?>
 
