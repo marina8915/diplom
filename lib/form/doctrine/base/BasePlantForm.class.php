@@ -28,6 +28,7 @@ abstract class BasePlantForm extends BaseFormDoctrine
       'prevs_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Plant')),
       'nexts_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Plant')),
       'ground_types_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'GroundType')),
+      'heavens_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Heaven')),
     ));
 
     $this->setValidators(array(
@@ -44,6 +45,7 @@ abstract class BasePlantForm extends BaseFormDoctrine
       'prevs_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Plant', 'required' => false)),
       'nexts_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Plant', 'required' => false)),
       'ground_types_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'GroundType', 'required' => false)),
+      'heavens_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Heaven', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -83,6 +85,11 @@ abstract class BasePlantForm extends BaseFormDoctrine
       $this->setDefault('ground_types_list', $this->object->GroundTypes->getPrimaryKeys());
     }
 
+    if (isset($this->widgetSchema['heavens_list']))
+    {
+      $this->setDefault('heavens_list', $this->object->Heavens->getPrimaryKeys());
+    }
+
   }
 
   protected function doSave($con = null)
@@ -90,6 +97,7 @@ abstract class BasePlantForm extends BaseFormDoctrine
     $this->savePrevsList($con);
     $this->saveNextsList($con);
     $this->saveGroundTypesList($con);
+    $this->saveHeavensList($con);
 
     parent::doSave($con);
   }
@@ -205,6 +213,44 @@ abstract class BasePlantForm extends BaseFormDoctrine
     if (count($link))
     {
       $this->object->link('GroundTypes', array_values($link));
+    }
+  }
+
+  public function saveHeavensList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['heavens_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->Heavens->getPrimaryKeys();
+    $values = $this->getValue('heavens_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('Heavens', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('Heavens', array_values($link));
     }
   }
 

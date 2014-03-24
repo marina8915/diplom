@@ -1,10 +1,6 @@
 ﻿
 <ul class="nav">
-    <li>
-        <a href="<?php echo url_for('@homepage') ?>">
-            Головна
-        </a>
-    </li>
+
   <li>
         <a href="<?php echo url_for('@field') ?>">
             Поля
@@ -25,13 +21,22 @@
    Типи грунту
   </a>
  </li>
-
+    <li>
+        <a href="<?php echo url_for('@heaven') ?>">
+            Кліматичні зони
+        </a>
+    </li>
+    <!--        <li>
+        <a href="<?php echo url_for('@homepage') ?>">
+            Головна
+        </a>
+    </li>
     <li>
         <a href="<?php echo url_for('@fertilizer') ?>">
             Добрива
         </a>
     </li>
- <!--        <li>
+        <li>
         <a  href="<?php echo url_for('about/index')?>">
             Про господарство
         </a>

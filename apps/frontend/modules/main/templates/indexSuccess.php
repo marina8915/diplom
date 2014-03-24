@@ -28,6 +28,7 @@
     <?php include_partial('form', array('form' => $form)); ?>
 </div>
 
+
 <div class="fertilizers-wrapper">
     <?php include_partial('fertilizer/landing_list', array('fertilizers' => $fertilizers)); ?>
 </div>

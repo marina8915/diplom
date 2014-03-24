@@ -136,6 +136,10 @@
                 <source>Plants list</source>
                 <target>Культури</target>
             </trans-unit>
+            <trans-unit >
+                <source>Heaven List</source>
+                <target>Кліматичні зони</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

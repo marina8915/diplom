@@ -22,6 +22,8 @@
  * @property Doctrine_Collection $Field
  * @property Doctrine_Collection $GroundTypes
  * @property Doctrine_Collection $Plant_Ground
+ * @property Doctrine_Collection $Heavens
+ * @property Doctrine_Collection $Plant_Heaven
  * 
  * @method string              getName()            Returns the current record's "name" value
  * @method integer             getSeedPrice()       Returns the current record's "seed_price" value
@@ -40,6 +42,8 @@
  * @method Doctrine_Collection getField()           Returns the current record's "Field" collection
  * @method Doctrine_Collection getGroundTypes()     Returns the current record's "GroundTypes" collection
  * @method Doctrine_Collection getPlantGround()     Returns the current record's "Plant_Ground" collection
+ * @method Doctrine_Collection getHeavens()         Returns the current record's "Heavens" collection
+ * @method Doctrine_Collection getPlantHeaven()     Returns the current record's "Plant_Heaven" collection
  * @method Plant               setName()            Sets the current record's "name" value
  * @method Plant               setSeedPrice()       Sets the current record's "seed_price" value
  * @method Plant               setPrice()           Sets the current record's "price" value
@@ -57,6 +61,8 @@
  * @method Plant               setField()           Sets the current record's "Field" collection
  * @method Plant               setGroundTypes()     Sets the current record's "GroundTypes" collection
  * @method Plant               setPlantGround()     Sets the current record's "Plant_Ground" collection
+ * @method Plant               setHeavens()         Sets the current record's "Heavens" collection
+ * @method Plant               setPlantHeaven()     Sets the current record's "Plant_Heaven" collection
  * 
  * @package    marina
  * @subpackage model
@@ -142,6 +148,15 @@ abstract class BasePlant extends sfDoctrineRecord
              'foreign' => 'ground_id'));
 
         $this->hasMany('Plant_Ground', array(
+             'local' => 'id',
+             'foreign' => 'plant_id'));
+
+        $this->hasMany('Heaven as Heavens', array(
+             'refClass' => 'Plant_Heaven',
+             'local' => 'plant_id',
+             'foreign' => 'heaven_id'));
+
+        $this->hasMany('Plant_Heaven', array(
              'local' => 'id',
              'foreign' => 'plant_id'));
     }

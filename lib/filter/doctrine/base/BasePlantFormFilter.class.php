@@ -25,6 +25,7 @@ abstract class BasePlantFormFilter extends BaseFormFilterDoctrine
       'prevs_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Plant')),
       'nexts_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Plant')),
       'ground_types_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'GroundType')),
+      'heavens_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Heaven')),
     ));
 
     $this->setValidators(array(
@@ -40,6 +41,7 @@ abstract class BasePlantFormFilter extends BaseFormFilterDoctrine
       'prevs_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Plant', 'required' => false)),
       'nexts_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Plant', 'required' => false)),
       'ground_types_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'GroundType', 'required' => false)),
+      'heavens_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Heaven', 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('plant_filters[%s]');
@@ -105,6 +107,24 @@ abstract class BasePlantFormFilter extends BaseFormFilterDoctrine
     ;
   }
 
+  public function addHeavensListColumnQuery(Doctrine_Query $query, $field, $values)
+  {
+    if (!is_array($values))
+    {
+      $values = array($values);
+    }
+
+    if (!count($values))
+    {
+      return;
+    }
+
+    $query
+      ->leftJoin($query->getRootAlias().'.Plant_Heaven Plant_Heaven')
+      ->andWhereIn('Plant_Heaven.heaven_id', $values)
+    ;
+  }
+
   public function getModelName()
   {
     return 'Plant';
@@ -126,6 +146,7 @@ abstract class BasePlantFormFilter extends BaseFormFilterDoctrine
       'prevs_list'        => 'ManyKey',
       'nexts_list'        => 'ManyKey',
       'ground_types_list' => 'ManyKey',
+      'heavens_list'      => 'ManyKey',
     );
   }
 }

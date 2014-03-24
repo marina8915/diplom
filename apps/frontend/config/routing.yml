@@ -42,7 +42,14 @@ ground_type:
     prefix_path:          /ground
     column:               id
     with_wildcard_routes: true
-
+heaven:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Heaven
+    module:               heaven
+    prefix_path:          /heaven
+    column:               id
+    with_wildcard_routes: true
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 

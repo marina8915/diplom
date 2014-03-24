@@ -17,6 +17,7 @@ class CalcForm extends sfFormSymfony
             'fuel_price'          => new sfWidgetFormInputText(),
             'hour_price'          => new sfWidgetFormInputText(),
      //      'ground_type'   => new sfWidgetFormDoctrineChoice(array('model' => 'GroundType')),
+            'heaven'   => new sfWidgetFormDoctrineChoice(array('model' => 'Heaven')),
         ));
 
         $this->setValidators(array(
@@ -24,6 +25,7 @@ class CalcForm extends sfFormSymfony
             'fuel_price'    => new sfValidatorNumber(array('required' => true)),
             'hour_price'    => new sfValidatorNumber(array('required' => true)),
    //        'ground_type' => new sfValidatorDoctrineChoice(array('model' => 'GroundType', 'required' => true)),
+            'heaven' => new sfValidatorDoctrineChoice(array('model' => 'Heaven', 'required' => true)),
 
         ));
 
@@ -32,6 +34,7 @@ class CalcForm extends sfFormSymfony
             'fuel_price'          => 'Вартість топлива (грн/л)',
             'hour_price'          => 'Вартість години роботи (грн/годину)',
       //      'ground_type'   => 'Тип грунту',
+            'heaven'   => 'Кліматична зона',
         ));
 
         $this->widgetSchema->setNameFormat('calc_form[%s]');
