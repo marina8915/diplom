@@ -140,6 +140,14 @@
                 <source>Heaven List</source>
                 <target>Кліматичні зони</target>
             </trans-unit>
+            <trans-unit >
+                <source>Edit Heaven</source>
+                <target>Редагувати кліматичну зону</target>
+            </trans-unit>
+            <trans-unit >
+                <source>New Heaven</source>
+                <target>Створити кліматичну зону</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
