@@ -4,6 +4,7 @@ class RentableManager{
 
     public function getSortedPlants($plants, CalcConfig $config)
     {
+
         $valueMap = $plants;
         $profitMap = $this->getProfitMap($plants, $config);
 
@@ -12,7 +13,9 @@ class RentableManager{
 
     public function getMostWantedPlant(array $resultingArray)
     {
-        return $resultingArray[$this->getMaxArrayKey($resultingArray)];
+
+     return $resultingArray[$this->getMaxArrayKey($resultingArray)];
+
     }
 
 
@@ -25,6 +28,7 @@ class RentableManager{
         $money -= $this->getFertilizerCost($plant);
         $money += $this->getGrowProfit($plant);
         return $money;
+
     }
 
     public function getFertilizerCost(Plant $plant){

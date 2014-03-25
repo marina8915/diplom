@@ -6,7 +6,7 @@ class CalcConfig{
     private $fuelPrice;
     private $groundType;
     private $heaven;
-
+    private $plant;
     public static function hydrate(CalcConfig $calcConfig, array $data)
     {
         if (isset($data['fuel_price']))
@@ -20,6 +20,10 @@ class CalcConfig{
           if (isset($data['heaven'])){
               $heaven = HeavenTable::findHeaven($data['heaven']);
               $calcConfig->setHeaven($heaven);
+        }
+        if (isset($data['plant'])){
+            $plant = PlantTable::findPlant($data['plant']);
+            $calcConfig->setPlant($plant);
         }
 
         return $calcConfig;
@@ -65,5 +69,14 @@ class CalcConfig{
         return $this->hourPrice;
     }
 
+    public function setPlant(Plant $plant)
+    {
+        $this->plant = $plant;
+    }
+
+    public function getPlant()
+    {
+        return $this->plant;
+    }
 
 }

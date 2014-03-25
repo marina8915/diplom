@@ -18,6 +18,7 @@ class CalcForm extends sfFormSymfony
             'hour_price'          => new sfWidgetFormInputText(),
      //      'ground_type'   => new sfWidgetFormDoctrineChoice(array('model' => 'GroundType')),
             'heaven'   => new sfWidgetFormDoctrineChoice(array('model' => 'Heaven')),
+            'plant' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Plant')),
         ));
 
         $this->setValidators(array(
@@ -26,15 +27,16 @@ class CalcForm extends sfFormSymfony
             'hour_price'    => new sfValidatorNumber(array('required' => true)),
    //        'ground_type' => new sfValidatorDoctrineChoice(array('model' => 'GroundType', 'required' => true)),
             'heaven' => new sfValidatorDoctrineChoice(array('model' => 'Heaven', 'required' => true)),
-
+            'plant' => new sfValidatorDoctrineChoice(array('model' => 'Plant', 'required' => true)),
         ));
 
         $this->getWidgetSchema()->setLabels(array(
-    'years'          => 'Кількість років',
+             'years'          => 'Кількість років',
             'fuel_price'          => 'Вартість топлива (грн/л)',
             'hour_price'          => 'Вартість години роботи (грн/годину)',
       //      'ground_type'   => 'Тип грунту',
             'heaven'   => 'Кліматична зона',
+            'plant'   => 'Культури обов`язкові для посіву',
         ));
 
         $this->widgetSchema->setNameFormat('calc_form[%s]');

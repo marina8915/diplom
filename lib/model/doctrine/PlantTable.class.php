@@ -37,4 +37,12 @@ class PlantTable extends Doctrine_Table
             ->orderBy('n.value desc')
             ;
     }
+    public static function findPlant($id)
+    {
+        return Doctrine_Query::create()
+            ->from('Plant p')
+            ->where('p.id = ?', $id)
+            ->fetchOne()
+            ;
+    }
 }

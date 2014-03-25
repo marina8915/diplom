@@ -9,6 +9,7 @@ Plant:
     fuel: { type: integer, notnull: true }
     man_hours: { type: integer, notnull: true }
     fertilizer_id: { type: integer }
+
   relations:
     Fertilizer: { class: Fertilizer, local: fertilizer_id, foreign: id }
     Prevs: { local: next_plant_id, foreign: prev_plant_id, class: Plant, refClass: PlantRelation }
@@ -72,3 +73,4 @@ Settings:
   columns:
     name:          { type: varchar(255) }
     value:         { type: varchar(255) }
+

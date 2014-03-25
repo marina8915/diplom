@@ -8,7 +8,7 @@ $rentableManager = $rentableManager->getRawValue();
     var allData = [];
     var valueData = [];
     var profitData = [];
-//   allData[fieldId][year] = googleCartData;
+//  allData[fieldId][year] = googleCartData;
 </script>
 
 Сівозміна:
@@ -49,17 +49,17 @@ $rentableManager = $rentableManager->getRawValue();
             /** @var $currentPlant Plant */
             $currentPlant = $field->getPlant();
 
+
             for($i=1; $i<$yearsCount+1; $i++): ?>
                 <td fieldId="<?php echo $field->getId();?>" year="<?php echo $i;?>" class="year-cell" fieldName="<?php echo $field->getName();?>">
                     <?php
-
                     $valueMap = $currentPlant->getNextPlantsValueMap();
                     if ($valueMap instanceof sfOutputEscaperIteratorDecorator) $valueMap= $valueMap->getRawValue();
                     $profitMap = $rentableManager->getProfitMap($valueMap, $calcConfig->getRawValue());
                     $mixedKeyMap = $rentableManager->getMixedMap($profitMap, $valueMap);
                     $best = $rentableManager->getMostWantedPlant($mixedKeyMap);
                     ?>
-                    <b><?php echo $best; ?></b>
+                    <b><?php  echo $best;?></b>
                     <div class="clear"></div>
 
                     <?php // готуємо дані для діаграм
@@ -97,7 +97,7 @@ $rentableManager = $rentableManager->getRawValue();
                     </script>
 
                 </td>
-                <?php $currentPlant=$best; ?>
+                <?php $currentPlant=$best;?>
             <?php endfor; ?>
         </tr>
     <?php endforeach; ?>

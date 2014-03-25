@@ -25,4 +25,5 @@ class HeavenTable extends Doctrine_Table
             ->fetchOne()
             ;
     }
+
 }
