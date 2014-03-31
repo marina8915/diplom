@@ -24,7 +24,7 @@ class Plant extends BasePlant
 
         $nexts = PlantTable::getAll()->execute();
         foreach($nexts as $next){
-            $result[$next] = 1;
+            $result[$next] = 2;
         }
 
         $nexts = PlantTable::getNextsById($this->getId())->execute();

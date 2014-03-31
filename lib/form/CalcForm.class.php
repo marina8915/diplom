@@ -13,12 +13,13 @@ class CalcForm extends sfFormSymfony
     public function configure()
     {
         $this->setWidgets(array(
-          'years'          => new sfWidgetFormInputText(array('default'=>5)),
+          'years'          => new sfWidgetFormInputText(array('default'=>1)),
             'fuel_price'          => new sfWidgetFormInputText(),
             'hour_price'          => new sfWidgetFormInputText(),
      //      'ground_type'   => new sfWidgetFormDoctrineChoice(array('model' => 'GroundType')),
             'heaven'   => new sfWidgetFormDoctrineChoice(array('model' => 'Heaven')),
-            'plant' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Plant')),
+         //   'plant' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Plant')),
+            'plant' => new sfWidgetFormDoctrineChoice(array( 'model' => 'Plant')),
         ));
 
         $this->setValidators(array(
@@ -31,12 +32,12 @@ class CalcForm extends sfFormSymfony
         ));
 
         $this->getWidgetSchema()->setLabels(array(
-             'years'          => 'Кількість років',
+             'years'          => ' ',
             'fuel_price'          => 'Вартість топлива (грн/л)',
             'hour_price'          => 'Вартість години роботи (грн/годину)',
       //      'ground_type'   => 'Тип грунту',
             'heaven'   => 'Кліматична зона',
-            'plant'   => 'Культури обов`язкові для посіву',
+            'plant'   => 'Культура обов`язкова для посіву',
         ));
 
         $this->widgetSchema->setNameFormat('calc_form[%s]');

@@ -11,19 +11,23 @@ $rentableManager = $rentableManager->getRawValue();
 //  allData[fieldId][year] = googleCartData;
 </script>
 
-Сівозміна:
 
 <table class="table table-striped" id="result_table">
     <thead>
     <tr>
-        <th>&nbsp;
+        <th>Поле
 
         </th>
-        <?php for($i=1; $i<1+$yearsCount; $i++): ?>
+        <th>
+           Культура
+        </th>
+        <th>
+            Грунт
+        </th>
             <th>
-                <b><?php echo 'Рік '.$i; ?></b>
+                Сівозміна
             </th>
-        <?php endfor; ?>
+
         <?php  $fieldCount=0 ?>
        <?php foreach($fields as $field): ?>
                  <?php  $fieldCount=$fieldCount+1 ?>
@@ -40,17 +44,15 @@ $rentableManager = $rentableManager->getRawValue();
                     valueData['<?php echo $field->getId(); ?>'] = [];
                     profitData['<?php echo $field->getId(); ?>'] = [];
                 </script>
-              <b><?php echo $field->getName(); ?></b>
-                <em><?php echo $field->getPlant()->getName(); ?></em>
-
-            </td>
-
+              <?php echo $field->getName(); ?></td>
+            <td><?php echo $field->getPlant()->getName(); ?></td>
+            <td><?php echo $field->getGroundType()->getName(); ?></td>
             <?php
             /** @var $currentPlant Plant */
             $currentPlant = $field->getPlant();
 
 
-            for($i=1; $i<$yearsCount+1; $i++): ?>
+            ?>
                 <td fieldId="<?php echo $field->getId();?>" year="<?php echo $i;?>" class="year-cell" fieldName="<?php echo $field->getName();?>">
                     <?php
                     $valueMap = $currentPlant->getNextPlantsValueMap();
@@ -59,7 +61,7 @@ $rentableManager = $rentableManager->getRawValue();
                     $mixedKeyMap = $rentableManager->getMixedMap($profitMap, $valueMap);
                     $best = $rentableManager->getMostWantedPlant($mixedKeyMap);
                     ?>
-                    <b><?php  echo $best;?></b>
+                    <?php  echo $best;?>
                     <div class="clear"></div>
 
                     <?php // готуємо дані для діаграм
@@ -98,7 +100,6 @@ $rentableManager = $rentableManager->getRawValue();
 
                 </td>
                 <?php $currentPlant=$best;?>
-            <?php endfor; ?>
         </tr>
     <?php endforeach; ?>
 

@@ -1,5 +1,10 @@
 ﻿
 <ul class="nav">
+    <li>
+        <a href="<?php echo url_for('@homepage') ?>">
+            Головна
+        </a>
+    </li>
 
   <li>
         <a href="<?php echo url_for('@field') ?>">
@@ -8,7 +13,7 @@
     </li>
     <li>
         <a href="<?php echo url_for('@plant') ?>">
-            Культри
+            Культури
         </a>
     </li>
     <li>
@@ -26,11 +31,7 @@
             Кліматичні зони
         </a>
     </li>
-    <!--        <li>
-        <a href="<?php echo url_for('@homepage') ?>">
-            Головна
-        </a>
-    </li>
+    <!--
     <li>
         <a href="<?php echo url_for('@fertilizer') ?>">
             Добрива
