@@ -2,13 +2,15 @@
 
 class RentableManager{
 
-    public function getSortedPlants($plants, CalcConfig $config)
+    public function getSortedPlants($plants,  CalcConfig $config)
     {
 
         $valueMap = $plants;
+        $groundMap = $plants;
+        $heavenMap = $plants;
         $profitMap = $this->getProfitMap($plants, $config);
 
-        return $this->getMixedMap($profitMap, $valueMap);
+        return $this->getMixedMap($profitMap, $valueMap,$groundMap, $heavenMap);
     }
 
     public function getMostWantedPlant(array $resultingArray)
@@ -71,11 +73,11 @@ class RentableManager{
         }
         return !is_null($max)?$max:0;
     }
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 //СумарнеЗнач=МакЗначПоперднків/МакЗначПоПрибутку*ЗначПоПрибутку*Індекс+ЗначПоперднків*Індекс
 
     // приводить значення параметрів до єдиної шкали, суммує параметри, привязує до параметра культуру
-    public function getMixedMap(SplObjectStorage $profitMap , SplObjectStorage $valueMap)
+    public function getMixedMap(SplObjectStorage $profitMap , SplObjectStorage $valueMap, SplObjectStorage $heavenMap, SplObjectStorage $groundMap)
     {
         $result = array();
 
@@ -84,7 +86,7 @@ class RentableManager{
         $scale = $maxValue != 0 ? $maxValue / $maxProfit : 1;
 
         foreach($profitMap as $plant){
-            $key = ($scale *$profitMap[$plant])*0.67 +  $valueMap[$plant]*0.33;
+            $key = ($scale *$profitMap[$plant]) +  $valueMap[$plant]+ $heavenMap[$plant] + $groundMap[$plant];
             $result[(string)$key] = $plant;
         }
 

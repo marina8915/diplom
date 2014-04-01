@@ -7,13 +7,16 @@
  * 
  * @property string $name
  * @property Doctrine_Collection $Plants
+ * @property Doctrine_Collection $Field
  * @property Doctrine_Collection $Plant_Heaven
  * 
  * @method string              getName()         Returns the current record's "name" value
  * @method Doctrine_Collection getPlants()       Returns the current record's "Plants" collection
+ * @method Doctrine_Collection getField()        Returns the current record's "Field" collection
  * @method Doctrine_Collection getPlantHeaven()  Returns the current record's "Plant_Heaven" collection
  * @method Heaven              setName()         Sets the current record's "name" value
  * @method Heaven              setPlants()       Sets the current record's "Plants" collection
+ * @method Heaven              setField()        Sets the current record's "Field" collection
  * @method Heaven              setPlantHeaven()  Sets the current record's "Plant_Heaven" collection
  * 
  * @package    marina
@@ -41,6 +44,10 @@ abstract class BaseHeaven extends sfDoctrineRecord
              'refClass' => 'Plant_Heaven',
              'local' => 'heaven_id',
              'foreign' => 'plant_id'));
+
+        $this->hasMany('Field', array(
+             'local' => 'id',
+             'foreign' => 'heaven_id'));
 
         $this->hasMany('Plant_Heaven', array(
              'local' => 'id',

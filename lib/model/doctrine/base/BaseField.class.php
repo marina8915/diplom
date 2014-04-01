@@ -10,23 +10,29 @@
  * @property integer $width
  * @property integer $length
  * @property integer $ground_type_id
+ * @property integer $heaven_id
  * @property Plant $Plant
  * @property GroundType $GroundType
+ * @property Heaven $Heaven
  * 
  * @method string     getName()           Returns the current record's "name" value
  * @method integer    getPrevPlantId()    Returns the current record's "prev_plant_id" value
  * @method integer    getWidth()          Returns the current record's "width" value
  * @method integer    getLength()         Returns the current record's "length" value
  * @method integer    getGroundTypeId()   Returns the current record's "ground_type_id" value
+ * @method integer    getHeavenId()       Returns the current record's "heaven_id" value
  * @method Plant      getPlant()          Returns the current record's "Plant" value
  * @method GroundType getGroundType()     Returns the current record's "GroundType" value
+ * @method Heaven     getHeaven()         Returns the current record's "Heaven" value
  * @method Field      setName()           Sets the current record's "name" value
  * @method Field      setPrevPlantId()    Sets the current record's "prev_plant_id" value
  * @method Field      setWidth()          Sets the current record's "width" value
  * @method Field      setLength()         Sets the current record's "length" value
  * @method Field      setGroundTypeId()   Sets the current record's "ground_type_id" value
+ * @method Field      setHeavenId()       Sets the current record's "heaven_id" value
  * @method Field      setPlant()          Sets the current record's "Plant" value
  * @method Field      setGroundType()     Sets the current record's "GroundType" value
+ * @method Field      setHeaven()         Sets the current record's "Heaven" value
  * 
  * @package    marina
  * @subpackage model
@@ -58,6 +64,9 @@ abstract class BaseField extends sfDoctrineRecord
         $this->hasColumn('ground_type_id', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('heaven_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
     }
 
     public function setUp()
@@ -69,6 +78,10 @@ abstract class BaseField extends sfDoctrineRecord
 
         $this->hasOne('GroundType', array(
              'local' => 'ground_type_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('Heaven', array(
+             'local' => 'heaven_id',
              'foreign' => 'id'));
     }
 }

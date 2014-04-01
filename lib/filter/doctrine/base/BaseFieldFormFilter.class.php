@@ -18,6 +18,7 @@ abstract class BaseFieldFormFilter extends BaseFormFilterDoctrine
       'width'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'length'         => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'ground_type_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('GroundType'), 'add_empty' => true)),
+      'heaven_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Heaven'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -26,6 +27,7 @@ abstract class BaseFieldFormFilter extends BaseFormFilterDoctrine
       'width'          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'length'         => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'ground_type_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('GroundType'), 'column' => 'id')),
+      'heaven_id'      => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Heaven'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('field_filters[%s]');
@@ -51,6 +53,7 @@ abstract class BaseFieldFormFilter extends BaseFormFilterDoctrine
       'width'          => 'Number',
       'length'         => 'Number',
       'ground_type_id' => 'ForeignKey',
+      'heaven_id'      => 'ForeignKey',
     );
   }
 }

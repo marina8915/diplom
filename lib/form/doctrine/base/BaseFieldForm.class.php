@@ -21,6 +21,7 @@ abstract class BaseFieldForm extends BaseFormDoctrine
       'width'          => new sfWidgetFormInputText(),
       'length'         => new sfWidgetFormInputText(),
       'ground_type_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('GroundType'), 'add_empty' => true)),
+      'heaven_id'      => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Heaven'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
@@ -30,6 +31,7 @@ abstract class BaseFieldForm extends BaseFormDoctrine
       'width'          => new sfValidatorInteger(),
       'length'         => new sfValidatorInteger(),
       'ground_type_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('GroundType'), 'required' => false)),
+      'heaven_id'      => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Heaven'), 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(

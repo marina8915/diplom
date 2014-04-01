@@ -12,5 +12,24 @@
  */
 class Heaven extends BaseHeaven
 {
+    public function __toString(){
+        return (string)$this->getName();
+    }
+
+    public function getNextPlantsHeavenMap()
+    {
+        $result = new SplObjectStorage();
+
+        $nexts = PlantTable::getAll()->execute();
+        foreach($nexts as $next){
+            $result[$next] = 1;
+        }
+
+        $nexts = PlantTable::getHeavensById($this->getId())->execute();
+        foreach($nexts as $next){
+            $result[$next] =  10;
+        }
+        return $result;
+    }
 
 }

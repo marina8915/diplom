@@ -14,6 +14,7 @@ class mainActions extends sfActions
         $this->fields = FieldTable::getAll()->execute();
         $this->form = new CalcForm();
         $this->fertilizers = FertilizerTable::getAll()->execute();
+       // $this->ground = GroundTypeTable::getAll()->execute();
     }
 
     /**
@@ -43,6 +44,7 @@ class mainActions extends sfActions
             $this->calcConfig = CalcConfig::hydrate(new CalcConfig(), $configData);
             // знаходимо всі поля
             $this->fields = FieldTable::getAll()->execute();
+            $this->ground = GroundTypeTable::getAll()->execute();
             $this->rentableManager = new RentableManager();
             // далі рендериться відображення apps/frontend/modules/main/templates/calcResultSuccess.php
         }

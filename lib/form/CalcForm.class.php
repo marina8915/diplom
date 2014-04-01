@@ -17,9 +17,9 @@ class CalcForm extends sfFormSymfony
             'fuel_price'          => new sfWidgetFormInputText(),
             'hour_price'          => new sfWidgetFormInputText(),
      //      'ground_type'   => new sfWidgetFormDoctrineChoice(array('model' => 'GroundType')),
-            'heaven'   => new sfWidgetFormDoctrineChoice(array('model' => 'Heaven')),
-         //   'plant' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Plant')),
-            'plant' => new sfWidgetFormDoctrineChoice(array( 'model' => 'Plant')),
+        //    'heaven'   => new sfWidgetFormDoctrineChoice(array('model' => 'Heaven')),
+           'plant' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Plant')),
+            //  'plant' => new sfWidgetFormDoctrineChoice(array( 'model' => 'Plant')),
         ));
 
         $this->setValidators(array(
@@ -27,7 +27,7 @@ class CalcForm extends sfFormSymfony
             'fuel_price'    => new sfValidatorNumber(array('required' => true)),
             'hour_price'    => new sfValidatorNumber(array('required' => true)),
    //        'ground_type' => new sfValidatorDoctrineChoice(array('model' => 'GroundType', 'required' => true)),
-            'heaven' => new sfValidatorDoctrineChoice(array('model' => 'Heaven', 'required' => true)),
+     //       'heaven' => new sfValidatorDoctrineChoice(array('model' => 'Heaven', 'required' => true)),
             'plant' => new sfValidatorDoctrineChoice(array('model' => 'Plant', 'required' => true)),
         ));
 
@@ -36,7 +36,7 @@ class CalcForm extends sfFormSymfony
             'fuel_price'          => 'Вартість топлива (грн/л)',
             'hour_price'          => 'Вартість години роботи (грн/годину)',
       //      'ground_type'   => 'Тип грунту',
-            'heaven'   => 'Кліматична зона',
+      //      'heaven'   => 'Кліматична зона',
             'plant'   => 'Культура обов`язкова для посіву',
         ));
 

@@ -31,6 +31,7 @@
             Кліматичні зони
         </a>
     </li>
+
     <!--
     <li>
         <a href="<?php echo url_for('@fertilizer') ?>">

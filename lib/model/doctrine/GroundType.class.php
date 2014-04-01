@@ -11,6 +11,26 @@
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 class GroundType extends BaseGroundType
-{
+{public function __toString(){
+    return (string)$this->getName();
+}
+
+    public function getNextPlantsGroundMap()
+    {
+        $result = new SplObjectStorage();
+
+        $nexts = PlantTable::getAll()->execute();
+        foreach($nexts as $next){
+            $result[$next] = 1;
+        }
+
+        $nexts = PlantTable::getGroundTypesById($this->getId())->execute();
+        foreach($nexts as $next){
+            $result[$next] =  10;
+        }
+        return $result;
+    }
+
+
 
 }

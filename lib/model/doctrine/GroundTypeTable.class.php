@@ -82,4 +82,7 @@ class GroundTypeTable extends Doctrine_Table
             ;
    }
 
+
+
+
 }

@@ -8,6 +8,8 @@ $rentableManager = $rentableManager->getRawValue();
     var allData = [];
     var valueData = [];
     var profitData = [];
+    var groundData = [];
+    var heavenData = [];
 //  allData[fieldId][year] = googleCartData;
 </script>
 
@@ -23,6 +25,9 @@ $rentableManager = $rentableManager->getRawValue();
         </th>
         <th>
             Грунт
+        </th>
+        <th>
+            Кліматична зона
         </th>
             <th>
                 Сівозміна
@@ -43,22 +48,31 @@ $rentableManager = $rentableManager->getRawValue();
                     allData['<?php echo $field->getId(); ?>'] = [];
                     valueData['<?php echo $field->getId(); ?>'] = [];
                     profitData['<?php echo $field->getId(); ?>'] = [];
+                    groundData['<?php echo $field->getId(); ?>'] = [];
+                    heavenData['<?php echo $field->getId(); ?>'] = [];
                 </script>
               <?php echo $field->getName(); ?></td>
             <td><?php echo $field->getPlant()->getName(); ?></td>
             <td><?php echo $field->getGroundType()->getName(); ?></td>
+            <td><?php echo $field->getHeaven()->getName(); ?></td>
             <?php
             /** @var $currentPlant Plant */
             $currentPlant = $field->getPlant();
-
+            $currentGround = $field->getGroundType();
+            $currentHeaven = $field->getHeaven();
 
             ?>
-                <td fieldId="<?php echo $field->getId();?>" year="<?php echo $i;?>" class="year-cell" fieldName="<?php echo $field->getName();?>">
+                <td fieldId="<?php echo $field->getId();?>" year="<?php echo $i;?>" ground="<?php echo $field->getGround_type_id();?>" class="year-cell" fieldName="<?php echo $field->getName();?>">
                     <?php
                     $valueMap = $currentPlant->getNextPlantsValueMap();
                     if ($valueMap instanceof sfOutputEscaperIteratorDecorator) $valueMap= $valueMap->getRawValue();
+                    $groundMap=$currentGround->getNextPlantsGroundMap();
+                    if ($groundMap instanceof sfOutputEscaperIteratorDecorator) $groundMap= $groundMap->getRawValue();
+                    $heavenMap = $currentHeaven->getNextPlantsHeavenMap();
+                    if ($heavenMap instanceof sfOutputEscaperIteratorDecorator) $heavenMap= $heavenMap->getRawValue();
+
                     $profitMap = $rentableManager->getProfitMap($valueMap, $calcConfig->getRawValue());
-                    $mixedKeyMap = $rentableManager->getMixedMap($profitMap, $valueMap);
+                    $mixedKeyMap = $rentableManager->getMixedMap($profitMap, $valueMap, $groundMap,$heavenMap);
                     $best = $rentableManager->getMostWantedPlant($mixedKeyMap);
                     ?>
                     <?php  echo $best;?>
@@ -66,7 +80,7 @@ $rentableManager = $rentableManager->getRawValue();
 
                     <?php // готуємо дані для діаграм
                     $td = array();
-                    $td [] = array('', 'Сумарний пріоритет');
+                    $td [] = array('', 'Сумарні пріоритети');
                     foreach($mixedKeyMap as $key=>$nextPlant){
                         $td [] = array($nextPlant->getName(), (float)$key);
                     }
@@ -77,7 +91,7 @@ $rentableManager = $rentableManager->getRawValue();
 
                     <?php // готуємо дані для діаграм
                     $td = array();
-                    $td [] = array('', 'Пріоритет по попередниках');
+                    $td [] = array('', 'Пріоритети по попередниках');
                     foreach($valueMap as $key=>$nextPlant){
                         $td [] = array($nextPlant->getName(), (float)$valueMap[$nextPlant]);
                     }
@@ -89,13 +103,35 @@ $rentableManager = $rentableManager->getRawValue();
                     <?php // готуємо дані для діаграм
                     $SQUARE=($field->getLength()*$field->getWidth())/10000;
                     $td = array();
-                    $td [] = array('', 'Пріоритет по прибутку в грн/га');
+                    $td [] = array('', 'Пріоритети по прибутку, грн/га');
                     foreach($profitMap as $key=>$nextPlant){
                         $td [] = array($nextPlant->getName(), (float)$profitMap[$nextPlant]*$SQUARE);
                     }
                     ?>
                     <script type="text/javascript">
                         profitData['<?php echo $field->getId(); ?>']['<?php echo $i; ?>'] = <?php echo json_encode($td); ?>;
+                    </script>
+
+                    <?php // готуємо дані для діаграм
+                    $td = array();
+                    $td [] = array('', 'Пріоритети по грунтах');
+                    foreach($groundMap as $key=>$nextPlant){
+                        $td [] = array($nextPlant->getName(), (float)$groundMap[$nextPlant]);
+                    }
+                    ?>
+                    <script type="text/javascript">
+                        groundData['<?php echo $field->getId(); ?>']['<?php echo $i; ?>'] = <?php echo json_encode($td); ?>;
+                    </script>
+
+                    <?php // готуємо дані для діаграм
+                    $td = array();
+                    $td [] = array('', 'Пріоритети по кліматичній зоні');
+                    foreach($heavenMap as $key=>$nextPlant){
+                        $td [] = array($nextPlant->getName(), (float)$heavenMap[$nextPlant]);
+                    }
+                    ?>
+                    <script type="text/javascript">
+                        heavenData['<?php echo $field->getId(); ?>']['<?php echo $i; ?>'] = <?php echo json_encode($td); ?>;
                     </script>
 
                 </td>
@@ -140,6 +176,18 @@ $rentableManager = $rentableManager->getRawValue();
 
                 var chart = new google.visualization.ColumnChart(document.getElementById('chart_profit'));
                 chart.draw(data, options);
+
+                // ground
+                var data = google.visualization.arrayToDataTable(groundData[fieldId][year]);
+
+                var chart = new google.visualization.ColumnChart(document.getElementById('chart_ground'));
+                chart.draw(data, options);
+
+                // heaven
+                var data = google.visualization.arrayToDataTable(heavenData[fieldId][year]);
+
+                var chart = new google.visualization.ColumnChart(document.getElementById('chart_heaven'));
+                chart.draw(data, options);
             });
         });
 
@@ -150,7 +198,9 @@ $rentableManager = $rentableManager->getRawValue();
 
 
 </script>
-
+<div id="chart_all" class="chart-div"></div>
 <div id="chart_value" class="chart-div"></div>
 <div id="chart_profit" class="chart-div"></div>
-<div id="chart_all" class="chart-div"></div>
+<div id="chart_heaven" class="chart-div"></div>
+<div id="chart_ground" class="chart-div"></div>
+

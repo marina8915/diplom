@@ -45,4 +45,23 @@ class PlantTable extends Doctrine_Table
             ->fetchOne()
             ;
     }
+    public static function getGroundTypesById($id)
+{
+    return Doctrine_Query::create()
+        ->select("p.*")
+        ->from('Plant p')
+        ->leftJoin("p.Plant_Ground n")
+        ->where('n.ground_id= ?', $id)
+        ;
+}
+    public static function getHeavensById($id)
+    {
+        return Doctrine_Query::create()
+            ->select("p.*")
+            ->from('Plant p')
+            ->leftJoin("p.Plant_Heaven n")
+            ->where('n.heaven_id= ?', $id)
+            ;
+    }
+
 }

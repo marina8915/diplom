@@ -29,10 +29,12 @@ Field:
     width: { type: integer, notnull: true }
     length: { type: integer, notnull: true }
     ground_type_id: { type: integer }
+    heaven_id: { type: integer }
 
   relations:
     Plant: { class: Plant, local: prev_plant_id, foreign: id }
     GroundType: { class: GroundType, local: ground_type_id, foreign: id }
+    Heaven: { class: Heaven, local: heaven_id, foreign: id }
 
 PlantRelation:
   columns:
@@ -56,6 +58,7 @@ Plant_Ground:
         relations:
           Plant:  { onDelete: CASCADE, local: plant_id, foreign: id }
           GroundType: { onDelete: CASCADE, local: ground_id, foreign: id }
+
 Heaven:
   columns:
     name: { type: string(255), notnull: true, unique: true }
@@ -69,6 +72,10 @@ Plant_Heaven:
         relations:
           Plant:  { onDelete: CASCADE, local: plant_id, foreign: id }
           Heaven: { onDelete: CASCADE, local: heaven_id, foreign: id }
+
+
+
+
 Settings:
   columns:
     name:          { type: varchar(255) }

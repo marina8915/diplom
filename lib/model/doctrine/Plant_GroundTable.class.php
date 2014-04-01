@@ -16,4 +16,5 @@ class Plant_GroundTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('Plant_Ground');
     }
+
 }
