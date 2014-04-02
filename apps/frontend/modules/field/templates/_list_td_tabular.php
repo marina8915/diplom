@@ -16,3 +16,6 @@
 <td class="sf_admin_foreignkey sf_admin_list_td_ground_type_id">
     <?php echo $field->getGroundType()->getName() ?>
 </td>
+<td class="sf_admin_foreignkey sf_admin_list_td_heaven_id">
+    <?php echo $field->getHeaven()->getName() ?>
+</td>

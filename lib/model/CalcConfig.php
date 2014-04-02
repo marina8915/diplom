@@ -4,27 +4,14 @@ class CalcConfig{
 
     private $hourPrice;
     private $fuelPrice;
-    private $groundType;
-    private $heaven;
-    private $plant;
+
     public static function hydrate(CalcConfig $calcConfig, array $data)
     {
         if (isset($data['fuel_price']))
         $calcConfig->setFuelPrice($data['fuel_price']);
         if (isset($data['hour_price']))
         $calcConfig->setHourPrice($data['hour_price']);
-      if (isset($data['ground_type'])){
-          $groundType = GroundTypeTable::findById($data['ground_type']);
-           $calcConfig->setGroundType($groundType);
-      }
-          if (isset($data['heaven'])){
-              $heaven = HeavenTable::findHeaven($data['heaven']);
-              $calcConfig->setHeaven($heaven);
-        }
-        if (isset($data['plant'])){
-            $plant = PlantTable::findPlant($data['plant']);
-            $calcConfig->setPlant($plant);
-        }
+
 
         return $calcConfig;
     }
@@ -39,25 +26,7 @@ class CalcConfig{
         return $this->fuelPrice;
     }
 
-    public function setGroundType(GroundType $groundType)
-    {
-        $this->groundType = $groundType;
-    }
 
-    public function getGroundType()
-    {
-        return $this->groundType;
-    }
-
-    public function setHeaven(Heaven $heaven)
-    {
-        $this->heaven = $heaven;
-    }
-
-        public function getHeaven()
-    {
-        return $this->heaven;
-    }
 
     public function setHourPrice($hourPrice)
     {
@@ -69,14 +38,6 @@ class CalcConfig{
         return $this->hourPrice;
     }
 
-    public function setPlant(Plant $plant)
-    {
-        $this->plant = $plant;
-    }
 
-    public function getPlant()
-    {
-        return $this->plant;
-    }
 
 }

@@ -141,12 +141,27 @@
                 <target>Кліматичні зони</target>
             </trans-unit>
             <trans-unit >
+                <source>Heaven</source>
+                <target>Кліматична зона</target>
+            </trans-unit>
+            <trans-unit >
                 <source>Edit Heaven</source>
                 <target>Редагувати кліматичну зону</target>
             </trans-unit>
             <trans-unit >
                 <source>New Heaven</source>
                 <target>Створити кліматичну зону</target>
+            </trans-unit>
+
+
+
+            <trans-unit >
+                <source>Ground types list</source>
+                <target>Грунти</target>
+            </trans-unit>
+            <trans-unit >
+                <source>Heavens list</source>
+                <target>Кліматичні зони</target>
             </trans-unit>
         </body>
     </file>

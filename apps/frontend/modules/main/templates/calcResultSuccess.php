@@ -26,9 +26,6 @@ $rentableManager = $rentableManager->getRawValue();
         <th>
             Грунт
         </th>
-        <th>
-            Кліматична зона
-        </th>
             <th>
                 Сівозміна
             </th>
@@ -54,7 +51,6 @@ $rentableManager = $rentableManager->getRawValue();
               <?php echo $field->getName(); ?></td>
             <td><?php echo $field->getPlant()->getName(); ?></td>
             <td><?php echo $field->getGroundType()->getName(); ?></td>
-            <td><?php echo $field->getHeaven()->getName(); ?></td>
             <?php
             /** @var $currentPlant Plant */
             $currentPlant = $field->getPlant();
