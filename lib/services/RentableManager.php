@@ -86,7 +86,7 @@ class RentableManager{
         $scale = $maxValue != 0 ? $maxValue / $maxProfit : 1;
 
         foreach($profitMap as $plant){
-            $key = ($scale *$profitMap[$plant]) +  $valueMap[$plant]+ $heavenMap[$plant] + $groundMap[$plant];
+            $key = ($scale *$profitMap[$plant])*0.54 +  $valueMap[$plant]*0.29+ $heavenMap[$plant]*0.07 + $groundMap[$plant]*0.1;
             $result[(string)$key] = $plant;
         }
 

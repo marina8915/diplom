@@ -152,9 +152,10 @@
                 <source>New Heaven</source>
                 <target>Створити кліматичну зону</target>
             </trans-unit>
-
-
-
+            <trans-unit >
+                <source>Required.</source>
+                <target>Поле не заповнено!</target>
+            </trans-unit>
             <trans-unit >
                 <source>Ground types list</source>
                 <target>Грунти</target>
